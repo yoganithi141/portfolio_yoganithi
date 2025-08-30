@@ -262,43 +262,61 @@ My goal is to become a skilled professional who can contribute meaningfully to t
 
 
                     <!-- Contact Start -->
-                    <section class="py-5 wow fadeInUp" data-wow-delay="0.1s" id="contact">
-                        <h1 class="title pb-3 mb-5">Contact Me</h1>
-						
-                        <form>
-                            <div class="row g-3">
-                                <div class="col-md-6">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control border-0 bg-secondary" id="name" placeholder="Your Name">
-                                        <label for="name">Your Name</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-floating">
-                                        <input type="email" class="form-control border-0 bg-secondary" id="email" placeholder="Your Email">
-                                        <label for="email">Your Email</label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control border-0 bg-secondary" id="subject" placeholder="Subject">
-                                        <label for="subject">Subject</label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-floating">
-                                        <textarea class="form-control border-0 bg-secondary" placeholder="Leave a message here" id="message" style="height: 200px"></textarea>
-                                        <label for="message">Message</label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <button class="btn btn-primary w-100 py-3" type="submit">Send Message</button>
-                                </div>
-                            </div>
-                        </form>
-                    </section>
-                    <!-- Contact End -->
+<section class="py-5 wow fadeInUp" data-wow-delay="0.1s" id="contact">
+  <h1 class="title pb-3 mb-5">Contact Me</h1>
 
+  <form id="contact-form">
+    <div class="row g-3">
+      <div class="col-md-6">
+        <div class="form-floating">
+          <input type="text" class="form-control border-0 bg-secondary text-light" name="name" id="name" placeholder="Your Name" required>
+          <label for="name">Your Name</label>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-floating">
+          <input type="email" class="form-control border-0 bg-secondary text-light" name="email" id="email" placeholder="Your Email" required>
+          <label for="email">Your Email</label>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="form-floating">
+          <input type="text" class="form-control border-0 bg-secondary text-light" name="subject" id="subject" placeholder="Subject" required>
+          <label for="subject">Subject</label>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="form-floating">
+          <textarea class="form-control border-0 bg-secondary text-light" placeholder="Leave a message here" name="message" id="message" style="height: 200px" required></textarea>
+          <label for="message">Message</label>
+        </div>
+      </div>
+      <div class="col-12">
+        <button class="btn btn-primary w-100 py-3" type="submit">Send Message</button>
+      </div>
+    </div>
+  </form>
+</section>
+<!-- Contact End -->
+
+<!-- EmailJS Script -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+  (function(){
+    emailjs.init("KBqrEhCHuCi_hVcGP"); // ✅ Your Public Key
+  })();
+
+  document.getElementById("contact-form").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    emailjs.sendForm("Yxgs_283910", "template_s8vzrje", this)
+      .then(function() {
+        alert("✅ Message sent successfully!");
+      }, function(error) {
+        alert("❌ Failed to send message. Error: " + JSON.stringify(error));
+      });
+  });
+			</script>
                     <!-- Footer Start -->
                     <section class="wow fadeIn" data-wow-delay="0.1s">
                         <div class="bg-secondary text-light text-center p-5">
@@ -345,6 +363,7 @@ My goal is to become a skilled professional who can contribute meaningfully to t
         <script src="main.js"></script>
     </body>
 </html>
+
 
 
 
